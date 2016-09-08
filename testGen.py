@@ -14,22 +14,22 @@ n = 0 # this will be the columns of our matrix
 
 # Ensure that we have 2 arguments
 if (len(sys.argv)) < 3: 
-	common.eprint('ERROR! Expected two integer arguments')
-	sys.exit(0)
+    common.eprint('ERROR! Expected two integer arguments')
+    sys.exit(0)
 
 # Verify that the arguments are integers
 try: 
-	m = int(sys.argv[1])
-	n = int(sys.argv[2])
-	if not isinstance(m, int) or not isinstance(n, int):
-		raise Exception
+    m = int(sys.argv[1])
+    n = int(sys.argv[2])
+    if not isinstance(m, int) or not isinstance(n, int):
+        raise Exception
 except Exception, e:
-	common.eprint('ERROR! Expected two integer arguments')
-	sys.exit(0)
+    common.eprint('ERROR! Expected two integer arguments')
+    sys.exit(0)
 
 # Generate the matrix using numpy	
-matrix = np.random.rand(m, n)
-common.printMatrix(matrix, m, n)
+MATRIX = np.random.rand(m, n)
+common.print_matrix(MATRIX, m, n)
 
 
 

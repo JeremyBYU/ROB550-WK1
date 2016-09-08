@@ -8,6 +8,7 @@
             "stopOnEntry": true,
             "pythonPath": "${config.python.pythonPath}",
             "program": "${file}",
+            "args": ["C.csv"],
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",
@@ -21,6 +22,7 @@
             "stopOnEntry": true,
             "pythonPath": "${config.python.pythonPath}",
             "program": "${file}",
+            "args": ["C.csv"],
             "externalConsole": true,
             "debugOptions": [
                 "WaitOnAbnormalExit",
