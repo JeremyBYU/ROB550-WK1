@@ -2,12 +2,11 @@
 # Author: Jeremy Castagno
 # Date: Sept 7 2016
 # Summary: 
-# 	This program will multpy two matrices (A, B) together.
+# 	This program will multpy two matrices (A, B) together using numpy
 #	The user will prompted for the sizes of A and B 
 # 	The matrices are defined in two files (A.csv, B.csv).
 #	
 import numpy as np
-
 import sys
 import common # Common functions module
 
