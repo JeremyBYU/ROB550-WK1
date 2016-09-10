@@ -155,21 +155,20 @@ int main(int argc, char **argv)
   char* bFile = "B.csv";
   
   int64_t sTime;
-
+  // Read Matrix Dimensions, Create and Empty Matrix, and Read CSV and insert data into matrix
   read_dimension(&dim_a_row, &dim_a_col, a);
   matrix_a = create_array(dim_a_row, dim_a_col);
   read_file(aFile, matrix_a, dim_a_row, dim_a_col);
 
-  // print_matrix("C.csv", matrix_a, dim_a_row, dim_a_col);
-
+  // Read Matrix Dimensions, Create and Empty Matrix, and Read CSV and insert data into matrix
   read_dimension(&dim_b_row, &dim_b_col, b);
   matrix_b = create_array(dim_b_row, dim_b_col);
   read_file(bFile, matrix_b, dim_b_row, dim_b_col);
-  // print_matrix("C.csv", matrix_b, dim_b_row, dim_b_col);
-  sTime = utime_now();
-  product = dot_product(matrix_a, matrix_b, dim_a_row, dim_a_col, dim_b_row, dim_b_col);
+
+  sTime = utime_now(); // Get Time Stamp
+  product = dot_product(matrix_a, matrix_b, dim_a_row, dim_a_col, dim_b_row, dim_b_col); // dot product
   printf("\nElapsed Time: %" PRId64 "\n", utime_now() - sTime);
   // print_matrix("C.csv", product, dim_a_row, dim_b_col);
-  print_file(argv[1], product, dim_a_row, dim_b_col);
+  print_file(argv[1], product, dim_a_row, dim_b_col); // Print Product Matrix to Out file
   return 0;
 }
