@@ -98,7 +98,7 @@ void read_dimension(int *row, int *col, char matrix_name)
 
 int read_file(char *fileName, double** mat, int row, int col)
 {
-  char buffer[1024];
+  char buffer[100024];
   char *record, *line;
   int i = 0, j = 0;
   // double mat[100][100];
