@@ -15,7 +15,22 @@ void print_matrix(char* fileName, double** mat, int row, int col);
 double mult_row_col(double** mat1, double** mat2, int row, int col, int size);
 double** dot_product(double** mat1, double** mat2, int dim1_row, int dim1_col, int dim2_row, int dim2_col);
 int dim_compatible(int mat1_col, int mat2_row);
+void print_file(char* fileName, double** mat, int row, int col);
 
+void print_file(char* fileName, double** mat, int row, int col) {
+  FILE *fp;
+  int i,j;
+ 
+  fp=fopen(fileName,"w+");
+  // fprintf(fp,"Student Id, Physics, Chemistry, Maths");
+  for(i = 0; i < row; i++) {
+    for(j = 0;j < col; j++) {
+      fprintf(fp, "%f, ", mat[i][j]);
+    }
+    fprintf(fp, "\n");
+  }
+  fclose(fp);
+}
 int64_t utime_now (void){
 	struct timeval tv;
 	gettimeofday (&tv, NULL);
@@ -126,14 +141,19 @@ int read_file(char *fileName, double** mat, int row, int col)
   // i == number of rows, j == number of columns
 }
 
-int main()
+int main(int argc, char **argv)
 {
+  if(argc < 2) {
+    fprintf(stderr, "Please specify and outfile in arguments (e.g. matmult C.csv)");
+    exit(0);
+  }
   // printf() displays the string inside quotation
   int dim_a_row, dim_a_col, dim_b_row, dim_b_col;
   char a = 'A', b = 'B';
   double ** matrix_a, ** matrix_b, ** product;
   char* aFile = "A.csv"; 
   char* bFile = "B.csv";
+  
   int64_t sTime;
 
   read_dimension(&dim_a_row, &dim_a_col, a);
@@ -150,5 +170,6 @@ int main()
   product = dot_product(matrix_a, matrix_b, dim_a_row, dim_a_col, dim_b_row, dim_b_col);
   printf("\nElapsed Time: %" PRId64 "\n", utime_now() - sTime);
   // print_matrix("C.csv", product, dim_a_row, dim_b_col);
+  print_file(argv[1], product, dim_a_row, dim_b_col);
   return 0;
 }
