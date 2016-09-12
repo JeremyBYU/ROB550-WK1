@@ -25,7 +25,11 @@ void print_file(char* fileName, double** mat, int row, int col) {
   // fprintf(fp,"Student Id, Physics, Chemistry, Maths");
   for(i = 0; i < row; i++) {
     for(j = 0;j < col; j++) {
-      fprintf(fp, "%f, ", mat[i][j]);
+      if (j < col - 1) {
+        fprintf(fp, "%f, ", mat[i][j]);
+      } else {
+        fprintf(fp, "%f", mat[i][j]);
+      }
     }
     fprintf(fp, "\n");
   }
@@ -164,6 +168,11 @@ int main(int argc, char **argv)
   read_dimension(&dim_b_row, &dim_b_col, b);
   matrix_b = create_array(dim_b_row, dim_b_col);
   read_file(bFile, matrix_b, dim_b_row, dim_b_col);
+
+  if(!dim_compatible(dim_a_col, dim_b_col)) {
+    fprintf(stderr, "ERROR! Matrix Dimensions not compatible for multiplication");
+    exit(0);
+  }
 
   sTime = utime_now(); // Get Time Stamp
   product = dot_product(matrix_a, matrix_b, dim_a_row, dim_a_col, dim_b_row, dim_b_col); // dot product
